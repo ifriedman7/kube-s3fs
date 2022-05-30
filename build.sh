@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ########################################################################################################################
-# PREREQUISTITS
+# PREREQUISITES
 ########################################################################################################################
 #
 # usage:
@@ -12,7 +12,7 @@
 #
 VERSION=$1
 PROJECT=kube-s3fs
-REPOSITORY=nuclearis
+REPOSITORY=ifriedman7
 
 
 # causes the shell to exit if any subcommand or pipeline returns a non-zero status.
@@ -48,7 +48,7 @@ docker push $REPOSITORY/$PROJECT:$VERSION
 #
 # (and replace some placeholder in the yaml files...
 # It is recommended to use HELM for bigger projects and more dynamic deployments
-#
-kubectl apply -f ./yaml/configmap_secrets.yaml
+###Build and push first. Then add to your kube cluster... as in the comments below.
+#kubectl apply -f ./yaml/configmap_secrets.yaml
 # Apply the YAML passed into stdin and replace the version string first
-cat ./yaml/daemonset.yaml | sed "s/$REPOSITORY\/$PROJECT/$REPOSITORY\/$PROJECT:$VERSION/g" | kubectl apply -f -
+#cat ./yaml/daemonset.yaml | sed "s/$REPOSITORY\/$PROJECT/$REPOSITORY\/$PROJECT:$VERSION/g" | kubectl apply -f -
